@@ -28,3 +28,17 @@ plt.xlabel('date', fontsize=14)
 plt.ylabel('personnel loss', fontsize=14)
 plt.grid(True)
 plt.show()
+
+
+
+x, y = roc_losses_per['date'], roc_losses_per['personnel']
+
+# Create plot
+fig = go.Figure()
+
+# Add traces
+fig.add_trace(go.Scatter(x = x, y = y,
+                    mode = 'lines+markers',
+                    name = 'lines+markers'))
+
+fig.show()
