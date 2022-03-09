@@ -1,0 +1,30 @@
+# This Python 3 environment comes with many helpful analytics libraries installed
+# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
+# For example, here's several helpful packages to load
+
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import matplotlib.pyplot as plt
+
+# Input data files are available in the read-only "../input/" directory
+# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory
+
+import os
+for dirname, _, filenames in os.walk('/kaggle/input'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
+
+# You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using "Save & Run All" 
+# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
+
+
+roc_losses_equ = pd.read_csv('/kaggle/input/2022-ukraine-russian-war/russia_losses_equipment.csv')
+roc_losses_equ.head()
+
+
+plt.plot(roc_losses_per['date'], roc_losses_per['personnel'])
+plt.title('Russian Personnel Losses')
+plt.xlabel('date', fontsize=14)
+plt.ylabel('personnel loss', fontsize=14)
+plt.grid(True)
+plt.show()
