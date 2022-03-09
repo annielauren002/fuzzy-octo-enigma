@@ -1,0 +1,99 @@
+print ("Welcome, to Sparkle Finish yard & house cleaning cost generater! Please answer the following questions.")
+total_sum = 0
+
+def service_type():
+    total_cost = 0
+    cleaning_sum = 0
+    choice = int(input("Which service do you want to use?\n(1) House cleaning\n(2) Yard Service\n"))
+    if choice == 1:
+        total_cost = House_Cleaning() # Calls the House_cleaning function and stores the final cost
+        return cleaning_sum
+    elif choice == 2:
+        total_cost = Yard_Service() # Calls the Yard_Service function and stores the final cost
+        return cleaning_sum
+    else:
+        print('Invalid input')
+        print (choice)
+
+        
+def House_Cleaning():
+    # Total number of rooms that need to be serviced
+    number_of_rooms = int(input("How many total rooms need to be cleaned? "))
+    cost_per_room = 0
+    cleaning_cost = 0
+    total_cleaning = 0
+    if number_of_rooms <= 2:
+        cost_per_room = number_of_rooms * 45
+        print ("You have a small number of rooms. Price per room is $45.")
+    elif 2 < number_of_rooms <= 4:
+        cost_per_room = number_of_rooms * 65
+        print ("You have a medium number of rooms. Price per room is $65.")
+    elif number_of_rooms > 4:
+        cost_per_room = number_of_rooms * 100
+        print ("You have a large number of rooms. Price per room is $100.")
+    room_cost = cost_per_room + cleaning_cost
+    
+    #additional services cost
+    # What kind of cleaning is needed and cost
+    print ("Please select the type(s) of cleaning need from the following menu.")
+    print ("\n1: Bathrooms - An additional $50.")
+    print ("\n2: Windows - An additional $20.")
+    
+    type_of_cleaning = eval(input("What type of cleaning do you need? Please enter the numerical value."))
+    
+    
+    if type_of_cleaning == 1:
+        cleaning_cost = (50)
+        print("You added one additional service for $50!")
+        
+    elif type_of_cleaning == 2:
+        cleaning_cost = (20)
+        print("You added one additional service for $20!")
+    
+    else:
+        cleaning_cost = (70)
+        print("You added two additional services for $70!")
+
+    total_cost = (room_cost + cleaning_cost) #total cost
+    print('The total cost of house cleaning is $',total_cost)
+    final_cost = Discount(total_cost)
+    return cleaning_cost
+    return total_cost
+
+
+def Yard_Service():
+# Prices of Yard service
+    cost_mowing = 20 #price per sq feet
+    cost_edging = 15 #price per feet
+    cost_shrub_pruning = 40 # pruning each shrub
+
+    print('Yard Service calculator')
+    print('How many square feet of yard do you need cleaned?')
+    yard_sq_feet = eval(input())
+    print('How many feet of edging do you want to clean?')
+    yard_edging = eval(input())
+    print('How many shrubs do you want to clean?')
+    yard_shrubs = eval(input())
+# Calculate the total cost of yard servicing
+    total_cost = ((yard_sq_feet * cost_mowing) + (yard_edging * cost_edging) + (yard_shrubs * cost_shrub_pruning))
+    print('The total cost of yard cleaning is $',total_cost)
+    final_cost = Discount(total_cost)
+    return total_cost # Return the cost of the service to Yard service function
+
+# To provide discount to senior citizens
+def Discount(total_cost):
+    senior = input('Are you a senior citizen?\n(Y/N)\n')
+    if senior == 'Y' or senior == 'y':
+        print('You have a 10 percent discount')
+        discount_amt = 0.10 * total_cost # provide a 10% discount
+        price_after_discount = total_cost - discount_amt
+        print("You need to pay:$",price_after_discount)
+    else:
+       print ("You need to pay:$",total_cost) 
+    return
+
+# To provide discount to senior citizens
+
+
+service = service_type()
+
